@@ -12,7 +12,7 @@ steps:
   - name: build
     image: registry.digitalocean.com/stewcasa/elm-builder:15
     commands:
-      - . $NVM_DIR/nvm.sh
+      - . /root/.nvm/nvm.sh
       - mkdir /opt/codebase-ui
       - export API_TOKEN=notsecret
       - export API_URL=http://localhost:26116
