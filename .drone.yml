@@ -15,5 +15,6 @@ steps:
       - mkdir /opt/codebase-ui
       - export API_TOKEN=notsecret
       - export API_URL=http://localhost:26116
+      - npm run makeElmEnv
       - elm make --output=/opt/codebase-ui/index.html src/Main.elm
       - tar -c -z -C /opt codebase-ui casebase-ui-$DRONE_BUILD_NUMBER.tar.gz
