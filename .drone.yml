@@ -18,4 +18,4 @@ steps:
       - export API_URL=http://localhost:26116
       - . /root/.nvm/nvm.sh && npm run makeElmEnv
       - elm make --output=/opt/codebase-ui/index.html src/Main.elm
-      - tar -c -z -C /opt casebase-ui-$DRONE_BUILD_NUMBER.tar.gz codebase-ui 
+      - tar -c -z -C /opt -f casebase-ui-$DRONE_BUILD_NUMBER.tar.gz codebase-ui 
