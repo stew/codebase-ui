@@ -7,7 +7,7 @@
     "url": "git+https://github.com/unisonweb/codebase-ui.git"
   },
   "scripts": {
-    "build": "elm make src/Main.elm --output public/bundle.js",
+    "build": "npm run makeElmEnv; elm make src/Main.elm --output public/bundle.js",
     "start": "npm run makeElmEnv; elm-live src/Main.elm --path-to-elm=node_modules/.bin/elm --dir=public --pushstate --verbose --proxy-prefix=/api --proxy-host=${API_URL} -- --output public/bundle.js",
     "test": "elm-test",
     "makeElmEnv": "node ./scripts/makeElmEnv.mjs"
