@@ -27,3 +27,4 @@ shape must be
 Additionally new icons added needs a new variant in `/src/UI/Icons.elm`.
 
 This whole process is manual and not amazing, but happens rarely.
+
