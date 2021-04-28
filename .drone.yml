@@ -12,10 +12,21 @@ steps:
   - name: build
     image: registry.digitalocean.com/stewcasa/elm-builder:18
     commands:
-      - 
       - mkdir /opt/codebase-ui
       - export API_TOKEN=notsecret
       - export API_URL=http://localhost:26116
       - . /root/.nvm/nvm.sh && npm run makeElmEnv
       - elm make --output=/opt/codebase-ui/index.html src/Main.elm
       - tar -c -z -C /opt -f casebase-ui-$DRONE_BUILD_NUMBER.tar.gz codebase-ui 
+
+  - name: publish-build
+    group: post-build
+    image: registry.digitalocean.com/stewcasa/haskell-build:18
+    environment:
+      VAULT_ADDR: "https://vault.stew.casa:8200"
+    commands:
+      - export ARCHIVE=casebase-ui-$DRONE_BUILD_NUMBER.tar.gz
+      - vault ssh -mode=ca -role=repo repo@hub.private.stew.casa dd of=upload/$ARCHIVE < $ARCHIVE
+    volumes:
+      - name: root_home
+        path: /root
