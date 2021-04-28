@@ -10,7 +10,7 @@ trigger:
 
 steps:
   - name: build
-    image: registry.digitalocean.com/stewcasa/elm-builder:latest
+    image: registry.digitalocean.com/stewcasa/elm-builder:12
     commands:
       - mkdir /opt/codebase-ui
       - export API_TOKEN=notsecret
