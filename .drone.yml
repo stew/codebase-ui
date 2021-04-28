@@ -10,12 +10,12 @@ trigger:
 
 steps:
   - name: build
-    image: registry.digitalocean.com/stewcasa/elm-builder:15
+    image: registry.digitalocean.com/stewcasa/elm-builder:18
     commands:
-      - . /root/.nvm/nvm.sh
+      - 
       - mkdir /opt/codebase-ui
       - export API_TOKEN=notsecret
       - export API_URL=http://localhost:26116
-      - npm run makeElmEnv
+      - . /root/.nvm/nvm.sh && npm run makeElmEnv
       - elm make --output=/opt/codebase-ui/index.html src/Main.elm
       - tar -c -z -C /opt codebase-ui casebase-ui-$DRONE_BUILD_NUMBER.tar.gz
