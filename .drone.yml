@@ -21,7 +21,7 @@ steps:
 
   - name: publish-build
     group: post-build
-    image: registry.digitalocean.com/stewcasa/haskell-builder:18
+    image: registry.digitalocean.com/stewcasa/haskell-builder:20
     environment:
       VAULT_ADDR: "https://vault.stew.casa:8200"
     commands:
