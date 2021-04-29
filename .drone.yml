@@ -17,7 +17,7 @@ steps:
       - export API_URL=http://localhost:26116
       - . /root/.nvm/nvm.sh && npm run makeElmEnv
       - elm make --output=/opt/codebase-ui/index.html src/Main.elm
-      - tar -c -z -C /opt -f casebase-ui-$DRONE_BUILD_NUMBER.tar.gz codebase-ui 
+      - tar -c -z -C /opt -f codebase-ui-$DRONE_BUILD_NUMBER.tar.gz codebase-ui 
 
   - name: publish-build
     group: post-build
@@ -25,7 +25,7 @@ steps:
     environment:
       VAULT_ADDR: "https://vault.stew.casa:8200"
     commands:
-      - export ARCHIVE=casebase-ui-$DRONE_BUILD_NUMBER.tar.gz
+      - export ARCHIVE=codebase-ui-$DRONE_BUILD_NUMBER.tar.gz
       - vault ssh -mode=ca -role=repo repo@hub.private.stew.casa dd of=upload/$ARCHIVE < $ARCHIVE
     volumes:
       - name: root_home
